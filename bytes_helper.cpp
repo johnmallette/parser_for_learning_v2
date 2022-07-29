@@ -13,7 +13,6 @@ std::vector<unsigned char>::size_type Bytes_Helper::read_compact_size(){
 
     switch(c){
         case 0xfd:
-            //change this, bad idea.
             *this >> *reinterpret_cast<uint16_t*>(&size);
             break;
         case 0xfe:
