@@ -10,7 +10,7 @@ struct Output{
     uint64_t amount;
     Script script_pubkey;
 
-    friend std::ostream& operator<<(std::ostream &lhs, Output &rhs){
+    friend std::ostream& operator<<(std::ostream &lhs, const Output &rhs){
         lhs << "| amount: " << std::dec << rhs.amount << '\n'
             << "| script_pubkey:" << rhs.script_pubkey << std::flush;
         return lhs;

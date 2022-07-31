@@ -5,7 +5,7 @@
 
 #include "transaction.h"
 
-bool Transaction::parse(std::vector<unsigned char> &bytes){
+bool Transaction::parse(const std::vector<unsigned char> &bytes){
     Bytes_Helper helper{bytes.cbegin(), bytes.cend()};
 
     try{
@@ -55,7 +55,7 @@ bool Transaction::parse(std::vector<unsigned char> &bytes){
     return true;
 }
 
-std::ostream& operator<<(std::ostream &lhs, Transaction &rhs){
+std::ostream& operator<<(std::ostream &lhs, const Transaction &rhs){
     lhs << "version: " <<  rhs.version << '\n' << std::endl
         << "inputs: " << rhs.inputs.size() << '\n' << std::endl;
     for(auto &i: rhs.inputs) lhs << i << '\n' << std::endl;

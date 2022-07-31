@@ -12,7 +12,7 @@
 class Transaction{
     public:
         Transaction(): version(0), locktime(0), segwit_flag(0){}
-        bool parse(std::vector<unsigned char> &);
+        bool parse(const std::vector<unsigned char> &);
     private:
         uint32_t version;
         uint32_t locktime;
@@ -20,7 +20,7 @@ class Transaction{
         std::vector<Input> inputs;
         std::vector<Output> outputs;
 
-        friend std::ostream& operator<<(std::ostream&, Transaction&);
+        friend std::ostream& operator<<(std::ostream&, const Transaction&);
 };
 
 #endif

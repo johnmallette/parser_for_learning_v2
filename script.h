@@ -10,11 +10,11 @@ class Script{
         Script(){}
         void parse(Bytes_Helper&);
         void parse_witness(Bytes_Helper&);
-        bool empty(){ return stack.empty(); };
+        inline bool empty() const { return stack.empty(); };
     private:
         std::vector<std::vector<unsigned char>> stack;
         
-        friend std::ostream& operator<<(std::ostream&, Script&);
+        friend std::ostream& operator<<(std::ostream&, const Script&);
 };
 
 #endif

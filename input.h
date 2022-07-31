@@ -13,7 +13,7 @@ struct Input{
     Script witness;
     uint32_t sequence;
 
-    friend std::ostream& operator<<(std::ostream &lhs, Input &rhs){
+    friend std::ostream& operator<<(std::ostream &lhs, const Input &rhs){
         lhs << "| txid: " << '\'' << rhs.txid << "\'\n"
             << "| vout: " << std::dec << rhs.index << '\n'
             << "| script_sig: " << rhs.script_sig << std::endl;

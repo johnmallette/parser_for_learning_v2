@@ -7,7 +7,7 @@
 extern std::runtime_error END_OF_BYTES;
 extern std::runtime_error NOT_AT_END_OF_BYTES;
 
-extern std::ostream& operator<<(std::ostream&, std::vector<unsigned char>&);
+extern std::ostream& operator<<(std::ostream&, const std::vector<unsigned char>&);
 
 class Bytes_Helper{
     public:
