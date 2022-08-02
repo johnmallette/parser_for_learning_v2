@@ -6,15 +6,18 @@
 #include "bytes_helper.h"
 
 class Script{
+    friend std::ostream& operator<<(std::ostream&, const Script&);
+
     public:
-        Script(){}
+        Script() = default;
         void parse(Bytes_Helper&);
         void parse_witness(Bytes_Helper&);
-        inline bool empty() const { return stack.empty(); };
+        bool empty() const { return stack.empty(); };
     private:
         std::vector<std::vector<unsigned char>> stack;
         
-        friend std::ostream& operator<<(std::ostream&, const Script&);
 };
+
+std::ostream& operator<<(std::ostream&, const Script&);
 
 #endif
