@@ -15,7 +15,6 @@ class Script{
         bool empty() const { return stack.empty(); };
     private:
         std::vector<std::vector<unsigned char>> stack;
-        
 };
 
 std::ostream& operator<<(std::ostream&, const Script&);

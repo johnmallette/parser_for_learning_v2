@@ -14,7 +14,8 @@ struct Input{
     uint32_t sequence = 0;
 };
 
-inline std::ostream& operator<<(std::ostream &lhs, const Input &rhs){
+inline
+std::ostream& operator<<(std::ostream &lhs, const Input &rhs){
     lhs << "| txid: " << '\'' << rhs.txid << "\'\n"
         << "| vout: " << std::dec << rhs.index << '\n'
         << "| script_sig: " << rhs.script_sig << std::endl;

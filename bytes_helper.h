@@ -9,7 +9,9 @@ extern std::runtime_error NOT_AT_END_OF_BYTES;
 
 class Bytes_Helper{
     friend Bytes_Helper& operator>>(Bytes_Helper&, std::vector<unsigned char>&);
-    template<typename T> friend Bytes_Helper& operator>>(Bytes_Helper&, T&);
+
+    template<typename T>
+    friend Bytes_Helper& operator>>(Bytes_Helper&, T&);
 
     public:
         Bytes_Helper(std::vector<unsigned char>::const_iterator it,
@@ -26,7 +28,9 @@ class Bytes_Helper{
 };
 
 Bytes_Helper& operator>>(Bytes_Helper&, std::vector<unsigned char>&);
-template<typename T> Bytes_Helper& operator>>(Bytes_Helper&, T&);
+
+template<typename T>
+Bytes_Helper& operator>>(Bytes_Helper&, T&);
 
 std::ostream& operator<<(std::ostream&, const std::vector<unsigned char>&);
 

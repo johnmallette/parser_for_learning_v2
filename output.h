@@ -11,7 +11,8 @@ struct Output{
     Script script_pubkey;
 };
 
-inline std::ostream &operator<<(std::ostream &lhs, const Output &rhs){
+inline
+std::ostream &operator<<(std::ostream &lhs, const Output &rhs){
         lhs << "| amount: " << std::dec << rhs.amount << '\n'
             << "| script_pubkey:" << rhs.script_pubkey << std::flush;
         return lhs;
