@@ -10,6 +10,7 @@ class Script{
 
     public:
         Script() = default;
+        Script(Bytes_Helper &bh): Script() { parse(bh); }
         void parse(Bytes_Helper&);
         void parse_witness(Bytes_Helper&);
         bool empty() const { return stack.empty(); };

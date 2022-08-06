@@ -1,6 +1,5 @@
 #include <iostream>
 #include <iterator>
-#include <algorithm>
 #include <stdexcept>
 
 #include "transaction.h"
@@ -18,28 +17,10 @@ bool Transaction::parse(const std::vector<unsigned char> &bytes){
             number_of_inputs = helper.read_compact_size();
         }
 
-        while(number_of_inputs--){
-            Input next;
+        while(number_of_inputs--) inputs.push_back(helper);
 
-            helper >> next.txid >> next.index;
-            std::reverse(next.txid.begin(), next.txid.end());
-
-            next.script_sig.parse(helper);
-            
-            helper >> next.sequence;
-
-            inputs.push_back(next);
-        }
-
-        for(auto i = helper.read_compact_size(); i > 0; --i){
-            Output next;
-
-            helper >> next.amount;
-
-            next.script_pubkey.parse(helper);
-
-            outputs.push_back(next);
-        }
+        for(auto i = helper.read_compact_size(); i > 0; --i)
+            outputs.push_back(helper);
 
         if(segwit_flag) for(auto &i: inputs) i.witness.parse_witness(helper);
 

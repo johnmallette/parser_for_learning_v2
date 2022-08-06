@@ -7,6 +7,12 @@
 #include "script.h"
 
 struct Output{
+    Output() = default;
+    Output(Bytes_Helper &bh): Output() {
+        bh >> amount;
+        script_pubkey = bh;
+    }
+
     uint64_t amount = 0;
     Script script_pubkey;
 };

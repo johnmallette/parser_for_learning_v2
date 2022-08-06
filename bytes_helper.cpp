@@ -1,4 +1,5 @@
 #include <iomanip>
+#include <algorithm>
 
 #include "bytes_helper.h"
 
@@ -64,4 +65,10 @@ std::ostream& operator<<(std::ostream &lhs, const std::vector<unsigned char> &rh
     for(auto &c: rhs)
         lhs << std::hex << std::setw(2) << std::setfill('0') << static_cast<int>(c);
     return lhs;
+}
+
+std::vector<unsigned char> reverse(const std::vector<unsigned char> &b){
+    std::vector<unsigned char> copy = b;
+    std::reverse(copy.begin(), copy.end());
+    return copy;
 }

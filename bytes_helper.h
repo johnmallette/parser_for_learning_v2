@@ -33,5 +33,6 @@ template<typename T>
 Bytes_Helper& operator>>(Bytes_Helper&, T&);
 
 std::ostream& operator<<(std::ostream&, const std::vector<unsigned char>&);
+std::vector<unsigned char> reverse(const std::vector<unsigned char> &);
 
 #endif
