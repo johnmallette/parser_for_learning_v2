@@ -17,10 +17,10 @@ bool Transaction::parse(const std::vector<unsigned char> &bytes){
             number_of_inputs = helper.read_compact_size();
         }
 
-        while(number_of_inputs--) inputs.push_back(helper);
+        while(number_of_inputs--) inputs.emplace_back(helper);
 
         for(auto i = helper.read_compact_size(); i > 0; --i)
-            outputs.push_back(helper);
+            outputs.emplace_back(helper);
 
         if(segwit_flag) for(auto &i: inputs) i.witness.parse_witness(helper);
 
