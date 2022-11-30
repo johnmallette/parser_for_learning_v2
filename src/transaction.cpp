@@ -1,10 +1,9 @@
-#include <iostream>
 #include <iterator>
 #include <stdexcept>
 
 #include "transaction.h"
 
-bool Transaction::parse(const std::vector<unsigned char> &bytes){
+void Transaction::parse(const std::vector<unsigned char> &bytes){
     Bytes_Helper helper{bytes.cbegin(), bytes.cend()};
 
     try{
@@ -30,13 +29,11 @@ bool Transaction::parse(const std::vector<unsigned char> &bytes){
     } catch(std::runtime_error &err){
         std::cerr << err.what() << std::endl;
 
-        return false;
+        *this = Transaction();
     }
-
-    return true;
 }
 
-std::ostream& operator<<(std::ostream &lhs, const Transaction &rhs){
+std::ostream &operator<<(std::ostream &lhs, const Transaction &rhs){
     lhs << "version: " <<  rhs.version << '\n' << std::endl
         << "inputs: " << rhs.inputs.size() << '\n' << std::endl;
     for(auto &i: rhs.inputs) lhs << i << '\n' << std::endl;

@@ -10,15 +10,16 @@
 #include "bytes_helper.h"
 
 class Transaction{
-    friend std::ostream& operator<<(std::ostream&, const Transaction&);
+    friend std::ostream &operator<<(std::ostream&, const Transaction&);
 
     public:
-        Transaction(uint32_t v, uint32_t l, unsigned char sw):
-            version(v), locktime(l), segwit_flag(sw) {}
-        Transaction(): Transaction(0, 0, 0) {}
+        Transaction() : version(0), locktime(0), segwit_flag(0) { }
         Transaction(const std::vector<unsigned char> &bytes):
             Transaction() { parse(bytes); }
-        bool parse(const std::vector<unsigned char> &);
+
+        void parse(const std::vector<unsigned char> &);
+
+        explicit operator bool() { return !outputs.empty(); };
 
     private:
         uint32_t version;

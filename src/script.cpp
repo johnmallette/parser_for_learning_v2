@@ -13,21 +13,22 @@ void Script::parse(Bytes_Helper &helper){
             case 0x4c:
                 helper >> item_size_8;
                 item_size = item_size_8;
-                stack.push_back(std::vector<unsigned char>(item_size, 0x00));
+                stack.emplace_back(item_size, 0x00);
                 helper >> stack.back();
                 break;
             case 0x4d:
                 helper >> item_size;
-                stack.push_back(std::vector<unsigned char>(item_size, 0x00));
+                stack.emplace_back(item_size, 0x00);
                 helper >> stack.back();
                 break;
             default:
                 if(b >= 0x01 && b <= 0x4b){
                     item_size = b;
-                    stack.push_back(std::vector<unsigned char>(item_size, 0x00));
+                    stack.emplace_back(item_size, 0x00);
                     helper >> stack.back();
                     break;
                 }
+                //opcode
                 stack.push_back(std::vector<unsigned char>{b});
         }
         size -= item_size;
