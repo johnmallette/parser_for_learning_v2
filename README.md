@@ -4,7 +4,7 @@ This program takes a hex string of a bitcoin transaction and outputs its parts. 
 
 It's purpose is educational, to reinforce what I have learned thus far about C++ and bitcoin transactions.
 
-Every day is a learning day.
+Every day is a learning day. EVERYDAY.
 
 Compile with:
 
